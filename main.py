@@ -37,7 +37,7 @@ def graficos(y, x=tempo):
     print("SAÍDAS- BackWard Euler")
     for i in y:
         print("t={:.2f}s: {}".format(k, i))
-        k += 0.2
+        k += dt
 
     plt.plot(x,y,'b', label='Sol. Numeric.')
     plt.plot(x, y_analitica(x), 'r', label='Sol. Analt.')
