@@ -12,8 +12,8 @@ dt=0.2
 resps_X=[]
 saidas_Y=[]
 
-#Gera sequência de numeros de 0 até 4.8 (5.2 não é incluso)
-tempo=np.arange(0,5.2,0.2)
+#Gera sequência de numeros de 0 até 5 em um intervalo de dt (5.2 não é incluso)
+tempo=np.arange(0,5+dt,dt)
 
 #Calculo da matriz Ad (A discreta)
 A=np.array([[0, 1],
@@ -39,7 +39,9 @@ def graficos(y, x=tempo):
         print("t={:.2f}s: {}".format(k, i))
         k += 0.2
 
-    plt.plot(x,y,'b',x, y_analitica(x), 'r')
+    plt.plot(x,y,'b', label='Sol. Numeric.')
+    plt.plot(x, y_analitica(x), 'r', label='Sol. Analt.')
+    plt.legend(loc="lower right")
     plt.title('Gráfico para delta-t = 0.2s')
     plt.xticks(np.arange(0,5.5,0.5))
     plt.xlabel('Tempo')
@@ -71,5 +73,5 @@ for t in tempo:
     saidas_Y.append(np.round(y(x(t))[0],4))
 
 graficos(saidas_Y)
-print(y_analitica(0))
+
 
